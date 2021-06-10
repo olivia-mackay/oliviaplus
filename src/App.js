@@ -1,10 +1,10 @@
-import './App.css';
 import '@fontsource/roboto';
-import { Button } from '@material-ui/core';
+import './App.css';
+import Biography from './page/Biography';
 
 function App() {
   return (
-    <Button>Olivia!</Button>
+    <Biography />
   );
 }
 
