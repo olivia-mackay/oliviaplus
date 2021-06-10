@@ -1,10 +1,11 @@
 import '@fontsource/roboto';
-import './App.css';
 import Biography from './page/Biography';
 
 function App() {
   return (
-    <Biography />
+    <div margin='auto' background-color='coral'>
+      <Biography />
+    </div>
   );
 }
 
