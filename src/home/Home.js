@@ -6,7 +6,7 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
@@ -14,54 +14,56 @@ import Resume from "../page/Resume";
 
 function Home() {
   return (
-    <Router>
-      <Menu>
-        <MenuItem>
-          <Button>
-            <Link component={RouterLink} to="/home">
-              Home
-            </Link>
-          </Button>
-        </MenuItem>
-        <MenuItem>
-          <Button>
-            <Link component={RouterLink} to="/bio">
-              Biography
-            </Link>
-          </Button>
-        </MenuItem>
-        <MenuItem>
-          <Button>
-            <Link component={RouterLink} to="/cats">
-              Cats!
-            </Link>
-          </Button>
-        </MenuItem>
-        <MenuItem>
-          <Button>
-            <Link component={RouterLink} to="/resume">
-              Résumé
-            </Link>
-          </Button>
-        </MenuItem>
-      </Menu>
-      <Container></Container>
+    <React.Fragment>
+      <Router>
+        <Menu>
+          <MenuItem>
+            <Button>
+              <Link component={RouterLink} to="/home">
+                Home
+              </Link>
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button>
+              <Link component={RouterLink} to="/bio">
+                Biography
+              </Link>
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button>
+              <Link component={RouterLink} to="/cats">
+                Cats!
+              </Link>
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button>
+              <Link component={RouterLink} to="/resume">
+                Résumé
+              </Link>
+            </Button>
+          </MenuItem>
+        </Menu>
+        <Container></Container>
 
-      <Switch>
-        <Route exact path="/">
-          <Redirect to="/home"></Redirect>
-        </Route>
-        <Route exact path="/bio">
-          <Biography />
-        </Route>
-        <Route exact path="/cats">
-          <Cats />
-        </Route>
-        <Route exact path="/resume">
-          <Resume />
-        </Route>
-      </Switch>
-    </Router>
+        <Switch>
+          <Route exact path="/home">
+            <Redirect to="/" />
+          </Route>
+          <Route exact path="/bio">
+            <Biography />
+          </Route>
+          <Route exact path="/cats">
+            <Cats />
+          </Route>
+          <Route exact path="/resume">
+            <Resume />
+          </Route>
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 

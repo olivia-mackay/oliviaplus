@@ -2,7 +2,6 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 const lightOrange = "#F4A261";
 const blueBlack = "#0D181C";
-const seafoam = "#2A9D8F";
 
 const GlobalTheme = createMuiTheme({
   palette: {
