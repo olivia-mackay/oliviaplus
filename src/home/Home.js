@@ -1,9 +1,10 @@
 import "@fontsource/roboto";
-import { Grid, Link, makeStyles, useTheme } from "@material-ui/core";
+import { Button, Container, Grid, Link } from "@material-ui/core";
 import React from "react";
 import {
   BrowserRouter as Router,
   Link as RouterLink,
+  Redirect,
   Route,
   Switch
 } from "react-router-dom";
@@ -11,58 +12,57 @@ import Biography from "../page/Biography";
 import Cats from "../page/Cats";
 import Resume from "../page/Resume";
 
-const styles = makeStyles((theme) => ({
-  horizontal: theme.horizontal,
-}));
-
 function Home() {
-  const theme = useTheme();
-  const classes = styles();
-
   return (
-    <Router>
-      <Grid
-        container
-        className={classes.horizontal}
-        spacing={theme.grid.spacing}
-      >
-        <Grid item xs={theme.grid.item.spacing}>
-          <Link component={RouterLink} to="/">
-            Home
-          </Link>
+    <Container>
+      <Router>
+        <Grid container>
+          <Grid item>
+            <Button>
+              <Link component={RouterLink} to="/home">
+                Home
+              </Link>
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button>
+              <Link component={RouterLink} to="/bio">
+                Biography
+              </Link>
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button>
+              <Link component={RouterLink} to="/cats">
+                Cats!
+              </Link>
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button>
+              <Link component={RouterLink} to="/resume">
+                Résumé
+              </Link>
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item xs={theme.grid.item.spacing}>
-          <Link component={RouterLink} to="/bio">
-            Biography
-          </Link>
-        </Grid>
-        <Grid item xs={theme.grid.item.spacing}>
-          <Link component={RouterLink} to="/cats">
-            Cats!
-          </Link>
-        </Grid>
-        <Grid item xs={theme.grid.item.spacing}>
-          <Link component={RouterLink} to="/resume">
-            Résumé
-          </Link>
-        </Grid>
-      </Grid>
 
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/bio">
-          <Biography />
-        </Route>
-        <Route exact path="/cats">
-          <Cats />
-        </Route>
-        <Route exact path="/resume">
-          <Resume />
-        </Route>
-      </Switch>
-    </Router>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/home"></Redirect>
+          </Route>
+          <Route exact path="/bio">
+            <Biography />
+          </Route>
+          <Route exact path="/cats">
+            <Cats />
+          </Route>
+          <Route exact path="/resume">
+            <Resume />
+          </Route>
+        </Switch>
+      </Router>
+    </Container>
   );
 }
 
