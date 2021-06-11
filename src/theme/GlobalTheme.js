@@ -14,6 +14,17 @@ const GlobalTheme = createMuiTheme({
     fontSize: 14,
     color: "primary",
   },
+  grid: {
+    spacing: 20,
+    item: {
+      spacing: 20,
+    },
+  },
+  horizontal: {
+    display: "flex",
+    gap: "1rem",
+    alignItems: "center",
+  },
 });
 
 export default GlobalTheme;
