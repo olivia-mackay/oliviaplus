@@ -14,55 +14,55 @@ import Resume from "../page/Resume";
 
 function Home() {
   return (
-    <Container className="container">
-      <Router>
-        <Grid container className="gridContainer">
-          <Grid item className="gridItem">
-            <Button className="button">
+    <Router>
+      <Container>
+        <Grid container>
+          <Grid item>
+            <Button>
               <Link component={RouterLink} to="/home">
                 Home
               </Link>
             </Button>
           </Grid>
-          <Grid item className="gridItem">
-            <Button className="button">
+          <Grid item>
+            <Button>
               <Link component={RouterLink} to="/bio">
                 Biography
               </Link>
             </Button>
           </Grid>
-          <Grid item className="gridItem">
-            <Button className="button">
+          <Grid item>
+            <Button>
               <Link component={RouterLink} to="/cats">
                 Cats!
               </Link>
             </Button>
           </Grid>
-          <Grid item className="gridItem">
-            <Button className="button">
+          <Grid item>
+            <Button>
               <Link component={RouterLink} to="/resume">
                 Résumé
               </Link>
             </Button>
           </Grid>
         </Grid>
+      </Container>
 
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/home"></Redirect>
-          </Route>
-          <Route exact path="/bio">
-            <Biography />
-          </Route>
-          <Route exact path="/cats">
-            <Cats />
-          </Route>
-          <Route exact path="/resume">
-            <Resume />
-          </Route>
-        </Switch>
-      </Router>
-    </Container>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/home"></Redirect>
+        </Route>
+        <Route exact path="/bio">
+          <Biography />
+        </Route>
+        <Route exact path="/cats">
+          <Cats />
+        </Route>
+        <Route exact path="/resume">
+          <Resume />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

@@ -5,7 +5,7 @@ import Home from "./home/Home";
 import "./index.css";
 import GlobalTheme from "./theme/GlobalTheme";
 
-console.log("initializing olivia.plus index page");
+console.log("initializing olivia.plus index page d^^b");
 
 ReactDOM.render(
   <React.StrictMode>

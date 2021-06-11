@@ -14,8 +14,12 @@ const GlobalTheme = createMuiTheme({
     },
   },
   overrides: {
-    MuiContainer: { maxWidth: "md" },
-    MuiTypography: { color: "primary" },
+    MuiContainer: {
+      maxWidth: "md",
+      justify: "center",
+      alignItems: "center",
+    },
+    MuiTypography: { color: "secondary" },
     MuiButton: {
       fontSize: "1rem",
       variant: "outlined",
@@ -32,7 +36,7 @@ const GlobalTheme = createMuiTheme({
         width: "50px",
         height: "50px",
       },
-      variant: "square",
+      variant: "rounded",
     },
   },
 });
