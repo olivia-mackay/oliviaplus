@@ -14,32 +14,32 @@ import Resume from "../page/Resume";
 
 function Home() {
   return (
-    <Container>
+    <Container className="container">
       <Router>
-        <Grid container>
-          <Grid item>
-            <Button>
+        <Grid container className="gridContainer">
+          <Grid item className="gridItem">
+            <Button className="button">
               <Link component={RouterLink} to="/home">
                 Home
               </Link>
             </Button>
           </Grid>
-          <Grid item>
-            <Button>
+          <Grid item className="gridItem">
+            <Button className="button">
               <Link component={RouterLink} to="/bio">
                 Biography
               </Link>
             </Button>
           </Grid>
-          <Grid item>
-            <Button>
+          <Grid item className="gridItem">
+            <Button className="button">
               <Link component={RouterLink} to="/cats">
                 Cats!
               </Link>
             </Button>
           </Grid>
-          <Grid item>
-            <Button>
+          <Grid item className="gridItem">
+            <Button className="button">
               <Link component={RouterLink} to="/resume">
                 Résumé
               </Link>

@@ -1,4 +1,3 @@
-import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -11,8 +10,7 @@ console.log("initializing olivia.plus index page");
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={GlobalTheme}>
-      <CssBaseline />
-      {<Home />}
+      <Home />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

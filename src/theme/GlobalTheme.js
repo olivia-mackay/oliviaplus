@@ -5,25 +5,22 @@ const blueBlack = "#0D181C";
 const seafoam = "#2A9D8F";
 
 const GlobalTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: lightOrange,
+    },
+    secondary: {
+      main: blueBlack,
+    },
+  },
   overrides: {
-    MuiCssBaseline: {
-      "@global": {
-        palette: {
-          primary: {
-            main: blueBlack,
-          },
-          secondary: {
-            main: seafoam,
-          },
-        },
-      },
-    },
-    MuiContainer: {
-      maxWidth: "md",
-    },
+    MuiContainer: { maxWidth: "md" },
+    MuiTypography: { color: "primary" },
     MuiButton: {
+      fontSize: "1rem",
+      variant: "outlined",
       outlined: {
-        borderRadius: 0,
+        borderRadius: "10px",
       },
     },
     MuiGrid: {
