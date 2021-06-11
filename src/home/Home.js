@@ -1,12 +1,12 @@
 import "@fontsource/roboto";
-import { Button, Container, Grid, Link } from "@material-ui/core";
+import { Button, Container, Link, Menu, MenuItem } from "@material-ui/core";
 import React from "react";
 import {
   BrowserRouter as Router,
   Link as RouterLink,
   Redirect,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
@@ -15,38 +15,37 @@ import Resume from "../page/Resume";
 function Home() {
   return (
     <Router>
-      <Container>
-        <Grid container>
-          <Grid item>
-            <Button>
-              <Link component={RouterLink} to="/home">
-                Home
-              </Link>
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button>
-              <Link component={RouterLink} to="/bio">
-                Biography
-              </Link>
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button>
-              <Link component={RouterLink} to="/cats">
-                Cats!
-              </Link>
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button>
-              <Link component={RouterLink} to="/resume">
-                Résumé
-              </Link>
-            </Button>
-          </Grid>
-        </Grid>
-      </Container>
+      <Menu>
+        <MenuItem>
+          <Button>
+            <Link component={RouterLink} to="/home">
+              Home
+            </Link>
+          </Button>
+        </MenuItem>
+        <MenuItem>
+          <Button>
+            <Link component={RouterLink} to="/bio">
+              Biography
+            </Link>
+          </Button>
+        </MenuItem>
+        <MenuItem>
+          <Button>
+            <Link component={RouterLink} to="/cats">
+              Cats!
+            </Link>
+          </Button>
+        </MenuItem>
+        <MenuItem>
+          <Button>
+            <Link component={RouterLink} to="/resume">
+              Résumé
+            </Link>
+          </Button>
+        </MenuItem>
+      </Menu>
+      <Container></Container>
 
       <Switch>
         <Route exact path="/">
