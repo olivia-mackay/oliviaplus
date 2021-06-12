@@ -45,13 +45,6 @@ function LinkMenu() {
           <ListItem>
             <Link component={RouterLink} to="/">
               <Button>
-                <Typography>Home</Typography>
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link component={RouterLink} to="/bio">
-              <Button>
                 <Typography>Biography</Typography>
               </Button>
             </Link>
@@ -85,9 +78,6 @@ function Home() {
         <Switch>
           <div className={classes.route}>
             <Route exact path="/">
-              <LinkMenu />
-            </Route>
-            <Route exact path="/bio">
               <LinkMenu />
               <div className={classes.page}>
                 <Biography />
