@@ -11,6 +11,9 @@ const useStyles = makeStyles(() => ({
     width: "1200px",
     marginLeft: "25px",
   },
+  text3: {
+    marginLeft: "150px",
+  },
 }));
 
 export default function Biography() {
@@ -32,10 +35,13 @@ export default function Biography() {
         FireRed, OMORI, and Bloodborne.
       </Typography>
       <Avatar
-        alt="it me!"
+        alt="placeholder"
         variant="rounded"
         src={`${process.env.PUBLIC_URL}/me.png`}
       />
+      <Typography variant="caption" className={classes.text3}>
+        (Placeholder...)
+      </Typography>
     </React.Fragment>
   );
 }
