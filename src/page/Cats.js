@@ -1,26 +1,47 @@
-import { Avatar, Container, Grid, Typography } from "@material-ui/core";
+import { Avatar, Card, Grid, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 
+const useStyles = makeStyles(() => ({
+  grid: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  text: {
+    paddingTop: "90px",
+    paddingLeft: "150px",
+    fontSize: "10rem",
+  },
+}));
+
 export default function Cats() {
+  const classes = useStyles();
+
   return (
-    <Container>
-      <Typography variant="body1">
-        Here is a paragraph about my cats!
-      </Typography>
-      <Grid container>
-        <Grid item>
+    <Grid container className={classes.grid}>
+      <Grid item>
+        <Card>
           <Avatar
             alt="Scarf"
+            variant="rounded"
             src={`${process.env.PUBLIC_URL}/cats/scarf.jpg`}
-          ></Avatar>
-        </Grid>
-        <Grid item>
+          />
+          <Typography className={classes.text} variant="h5">
+            Scarf
+          </Typography>
+        </Card>
+      </Grid>
+      <Grid item>
+        <Card>
           <Avatar
             alt="Butter"
+            variant="rounded"
             src={`${process.env.PUBLIC_URL}/cats/butter.jpg`}
-          ></Avatar>
-        </Grid>
+          />
+          <Typography className={classes.text} variant="h5">
+            Butter
+          </Typography>
+        </Card>
       </Grid>
-    </Container>
+    </Grid>
   );
 }
