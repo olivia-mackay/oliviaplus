@@ -8,7 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Toolbar,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -17,7 +17,7 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
@@ -33,9 +33,20 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0, // behind the top bar
     paddingTop: "100px",
   },
+  paper: {
+    background: theme.palette.accent.main,
+  },
   page: {
-    // shift everything away from navigation stuff
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(11),
+    marginLeft: theme.spacing(2),
+    maxWidth: theme.spacing(150),
+    width: "100%",
+  },
+  openDrawerPage: {
+    marginTop: theme.spacing(11),
+    marginLeft: theme.spacing(14),
+    maxWidth: theme.spacing(150),
+    width: "100%",
   },
   linkList: {
     paddingTop: "70px", // shift down under app bar
@@ -45,15 +56,18 @@ const useStyles = makeStyles((theme) => ({
     padding: "15px",
     paddingBottom: "15px",
   },
-  toolbar: {
+  appToolbar: {
+    marginLeft: -theme.spacing(1),
+    minHeight: "70px",
+  },
+  drawerToolbar: {
     padding: 0,
   },
-  icon: {},
 }));
 
-function LinkMenu() {
+function LinkMenu(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const { open, setOpen } = props;
 
   const handleClick = () => {
     setOpen(!open);
@@ -62,15 +76,22 @@ function LinkMenu() {
   return (
     <React.Fragment>
       <AppBar>
-        <Toolbar style={{ marginLeft: "-8px", minHeight: "70px" }}>
+        <Toolbar className={classes.appToolbar}>
           <IconButton edge="start" aria-label="menu" onClick={handleClick}>
-            <MenuIcon className={classes.icon} />
+            <MenuIcon color="secondary" />
           </IconButton>
           <Typography variant="h5">Navigation</Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="persistent" open={open} className={classes.drawer}>
-        <Toolbar className={classes.toolbar}>
+      <Drawer
+        variant="persistent"
+        open={open}
+        classes={{
+          root: classes.drawer,
+          paper: classes.paper,
+        }}
+      >
+        <Toolbar className={classes.drawerToolbar}>
           <List className={classes.linkList}>
             <ListItem
               button
@@ -113,24 +134,35 @@ function LinkMenu() {
 
 function Home() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    // handle clicking main page dismisses drawer, otherwise do nothing
+    if (open) {
+      console.log("closing drawer");
+      setOpen(!open);
+    }
+  };
 
   return (
-    <React.Fragment>
+    // todo we need to make sure these are shifted when we open the drawer
+    <div
+      className={open ? classes.openDrawerPage : classes.page}
+      onClick={handleClick}
+    >
       <Router>
-        <LinkMenu />
-        // todo we need to make sure these are shifted when we open the drawer
-        <div className={classes.page}>
-          <Switch>
-            <Route exact path="/bio" component={Biography} />
-            <Route exact path="/biography">
-              <Redirect to="/bio" />
-            </Route>
-            <Route exact path="/cats" component={Cats} />
-            <Route exact path="/resume" component={Resume} />
-          </Switch>
-        </div>
+        <LinkMenu open={open} setOpen={setOpen} />
+
+        <Switch>
+          <Route exact path="/bio" component={Biography} />
+          <Route exact path="/biography">
+            <Redirect to="/bio" />
+          </Route>
+          <Route exact path="/cats" component={Cats} />
+          <Route exact path="/resume" component={Resume} />
+        </Switch>
       </Router>
-    </React.Fragment>
+    </div>
   );
 }
 

@@ -13,6 +13,9 @@ const GlobalTheme = createMuiTheme({
       main: mint,
     },
     secondary: {
+      main: black,
+    },
+    accent: {
       main: purple,
     },
     background: {
@@ -23,26 +26,7 @@ const GlobalTheme = createMuiTheme({
       secondary: black,
     },
   },
-  overrides: {
-    MuiDrawer: {
-      paper: {
-        padding: 0,
-      },
-    },
-    MuiToolbar: {
-      root: {
-        padding: 0,
-        margin: 0,
-      },
-      gutters: {
-        padding: 0,
-        margin: 0,
-      },
-    },
-    MuiTypography: {
-      colorPrimary: true,
-    },
-  },
+  overrides: {},
 });
 
 export default GlobalTheme;
