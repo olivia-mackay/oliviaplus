@@ -1,47 +1,54 @@
-import { Avatar, Card, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Card, CardMedia, Container, makeStyles } from "@material-ui/core";
 import React from "react";
 
-const useStyles = makeStyles(() => ({
-  grid: {
+const importAll = (requireContext) => {
+  const images = [];
+  requireContext.keys().forEach((key) => {
+    images.push(key.replace("./", ""));
+  });
+  return images;
+};
+
+const useStyles = makeStyles((theme) => ({
+  container: {
     display: "flex",
+    flexWrap: "wrap",
     flexDirection: "row",
+    width: '1000px'
   },
-  text: {
-    paddingTop: "90px",
-    paddingLeft: "150px",
-    fontSize: "10rem",
+  card: {
+    margin: theme.spacing(1),
+    width: theme.spacing(35),
+  },
+  media: {
+    height: theme.spacing(35),
+    width: theme.spacing(35),
   },
 }));
 
-export default function Cats() {
+function CatCard(props) {
+  const image = props.image;
   const classes = useStyles();
+  const imageSrc = require(`../images/cats/${image}`);
 
   return (
-    <Grid container className={classes.grid}>
-      <Grid item>
-        <Card>
-          <Avatar
-            alt="Scarf"
-            variant="rounded"
-            src={`${process.env.PUBLIC_URL}/cats/scarf.jpg`}
-          />
-          <Typography className={classes.text} variant="h5">
-            Scarf
-          </Typography>
-        </Card>
-      </Grid>
-      <Grid item>
-        <Card>
-          <Avatar
-            alt="Butter"
-            variant="rounded"
-            src={`${process.env.PUBLIC_URL}/cats/butter.jpg`}
-          />
-          <Typography className={classes.text} variant="h5">
-            Butter
-          </Typography>
-        </Card>
-      </Grid>
-    </Grid>
+    <Card className={classes.card}>
+      <CardMedia className={classes.media} image={imageSrc.default} />
+    </Card>
+  );
+}
+
+export default function Cats() {
+  const classes = useStyles();
+  const images = importAll(
+    require.context("../images/cats", false, /\.(png|jpg)$/)
+  );
+
+  return (
+    <Container className={classes.container}>
+      {images.map((image) => {
+        return <CatCard key={image} image={image} />;
+      })}
+    </Container>
   );
 }
