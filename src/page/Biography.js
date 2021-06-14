@@ -1,19 +1,10 @@
-import { Avatar, makeStyles, Typography } from "@material-ui/core";
+import { Card, CardMedia, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 
-const useStyles = makeStyles(() => ({
-  text: {
-    marginTop: "25px",
-    width: "1200px",
-  },
-  text2: {
-    marginTop: "25px",
-    width: "1200px",
-    marginLeft: "25px",
-  },
-  text3: {
-    marginLeft: "150px",
-  },
+const useStyles = makeStyles((theme) => ({
+  text: {},
+  text2: {},
+  card: {},
 }));
 
 export default function Biography() {
@@ -34,14 +25,9 @@ export default function Biography() {
         play video games, and much more. Some of my favorite games are Pokemon
         FireRed, OMORI, and Bloodborne.
       </Typography>
-      <Avatar
-        alt="placeholder"
-        variant="rounded"
-        src={`${process.env.PUBLIC_URL}/me.png`}
-      />
-      <Typography variant="caption" className={classes.text3}>
-        (Placeholder...)
-      </Typography>
+      <Card className={classes.card}>
+        <CardMedia src={`${process.env.PUBLIC_URL}/me.png`} />
+      </Card>
     </React.Fragment>
   );
 }

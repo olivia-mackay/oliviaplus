@@ -1,15 +1,25 @@
-import { Avatar, Card, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Avatar, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 import React from "react";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   grid: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
   },
   text: {
-    paddingTop: "90px",
-    paddingLeft: "150px",
+    marginLeft: "15px",
+    paddingTop: "100px",
     fontSize: "10rem",
+  },
+  paper: {
+    display: "flex",
+    flexDirection: "row",
+    minWidth: "900px",
+    width: "300px",
+    paddingLeft: "-15px",
+    marginBottom: "15px",
+    background: theme.palette.secondary.main,
+    elevation: 0,
   },
 }));
 
@@ -19,7 +29,7 @@ export default function Cats() {
   return (
     <Grid container className={classes.grid}>
       <Grid item>
-        <Card>
+        <Paper className={classes.paper}>
           <Avatar
             alt="Scarf"
             variant="rounded"
@@ -28,10 +38,10 @@ export default function Cats() {
           <Typography className={classes.text} variant="h5">
             Scarf
           </Typography>
-        </Card>
+        </Paper>
       </Grid>
       <Grid item>
-        <Card>
+        <Paper className={classes.paper}>
           <Avatar
             alt="Butter"
             variant="rounded"
@@ -40,7 +50,7 @@ export default function Cats() {
           <Typography className={classes.text} variant="h5">
             Butter
           </Typography>
-        </Card>
+        </Paper>
       </Grid>
     </Grid>
   );
