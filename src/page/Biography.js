@@ -1,13 +1,14 @@
 import {
   Card,
+  CardContent,
   CardMedia,
   makeStyles,
   Typography,
-  CardContent,
 } from "@material-ui/core";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
+  card: {},
   text: {},
   text2: {},
   card: {},
@@ -18,10 +19,8 @@ export default function Biography() {
 
   return (
     <React.Fragment>
-      <Card>
-        <Card className={classes.card}>
-          <CardMedia src={`${process.env.PUBLIC_URL}/me.png`} />
-        </Card>
+      <Card className={classes.card}>
+        <CardMedia src={`${process.env.PUBLIC_URL}/me.png`} />
         <CardContent>
           <Typography variant="h6" className={classes.text}>
             My name is Olivia Moses and I'm a software engineer from Arkansas

@@ -10,7 +10,7 @@ import {
   Toolbar,
   Typography
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons";
+import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -35,36 +35,41 @@ const useStyles = makeStyles((theme) => ({
   },
   page: {
     // shift everything away from navigation stuff
-    marginLeft: "100px",
-    marginTop: "100px",
+    marginTop: theme.spacing(10),
   },
   linkList: {
-    paddingTop: "80px", // shift down under app bar
-    width: "90px",
+    paddingTop: "70px", // shift down under app bar
+    width: "100px",
   },
   link: {
-    padding: "5px",
-    paddingLeft: "10px",
+    padding: "15px",
+    paddingBottom: "15px",
   },
   toolbar: {
     padding: 0,
   },
+  icon: {},
 }));
 
 function LinkMenu() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   return (
     <React.Fragment>
       <AppBar>
         <Toolbar style={{ marginLeft: "-8px", minHeight: "70px" }}>
-          <IconButton edge="start" aria-label="menu">
-            <MenuIcon />
+          <IconButton edge="start" aria-label="menu" onClick={handleClick}>
+            <MenuIcon className={classes.icon} />
           </IconButton>
           <Typography variant="h5">Navigation</Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" className={classes.drawer}>
+      <Drawer variant="persistent" open={open} className={classes.drawer}>
         <Toolbar className={classes.toolbar}>
           <List className={classes.linkList}>
             <ListItem
@@ -113,6 +118,7 @@ function Home() {
     <React.Fragment>
       <Router>
         <LinkMenu />
+        // todo we need to make sure these are shifted when we open the drawer
         <div className={classes.page}>
           <Switch>
             <Route exact path="/bio" component={Biography} />
