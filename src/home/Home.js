@@ -8,7 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Toolbar,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -17,7 +17,7 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";

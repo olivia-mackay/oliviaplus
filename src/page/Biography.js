@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import me from "./image/me.png";
+import me from "../images/me.png";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
   },
   text: { marginBottom: "15px" },
-  caption: {
-    marginTop: '1500px'
-  }
 }));
 
 export default function Biography() {
@@ -45,7 +42,7 @@ export default function Biography() {
             draw, play video games, and much more. Some of my favorite games are
             Pokemon FireRed, OMORI, and Bloodborne.
           </Typography>
-          <Typography variant="caption" className={classes.caption}>
+          <Typography variant="caption">
             (placeholder for an actual image of me)
           </Typography>
         </CardContent>

@@ -1,29 +1,54 @@
-import { Card, CardMedia } from "@material-ui/core";
+import { Card, CardMedia, Container, makeStyles } from "@material-ui/core";
 import React from "react";
 
-function importAll(r) {
-  const images = {};
-  return r.keys().map((item) => {
-    console.log(`key item: ${item}`);
-    images[item.replace("./", "")] = r(item);
+const importAll = (requireContext) => {
+  const images = [];
+  requireContext.keys().forEach((key) => {
+    images.push(key.replace("./", ""));
   });
-}
+  return images;
+};
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: '1000px'
+  },
+  card: {
+    margin: theme.spacing(1),
+    width: theme.spacing(35),
+  },
+  media: {
+    height: theme.spacing(35),
+    width: theme.spacing(35),
+  },
+}));
 
 function CatCard(props) {
   const image = props.image;
+  const classes = useStyles();
+  const imageSrc = require(`../images/cats/${image}`);
+
   return (
-    <Card>
-      <CardMedia image={image} />
+    <Card className={classes.card}>
+      <CardMedia className={classes.media} image={imageSrc.default} />
     </Card>
   );
 }
 
 export default function Cats() {
+  const classes = useStyles();
   const images = importAll(
-    require.context("./images/cats", false, /\.(png|jpg)$/)
+    require.context("../images/cats", false, /\.(png|jpg)$/)
   );
 
-  return images.map((image) => {
-    return <CatCard key={image} image={image} />;
-  });
+  return (
+    <Container className={classes.container}>
+      {images.map((image) => {
+        return <CatCard key={image} image={image} />;
+      })}
+    </Container>
+  );
 }
