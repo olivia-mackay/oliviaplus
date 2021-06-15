@@ -5,7 +5,7 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import React from "react";
 const exif = require("exif-parser");
@@ -101,7 +101,7 @@ function CatCard(props) {
     };
 
     // update date with onload callback
-    const location = `resources/cats/bulk/${image}`;
+    const location = `../resources/cats/bulk/${image}`;
     await fetch(location)
       .then((data) => {
         console.log(`data fetched from ${location}: ${util.inspect(data)}`);
@@ -132,15 +132,11 @@ function CatCard(props) {
 export default function Cats() {
   const classes = useStyles();
   const images = importAll(
-    require.context(
-      `${process.env.PUBLIC_URL}/resources/cats/bulk`,
-      false,
-      /\.(png|jpg|jpeg|gif)$/
-    )
+    require.context(`../resources/cats/bulk`, false, /\.(png|jpg|jpeg|gif)$/)
   );
 
-  const scarf = require(`${process.env.PUBLIC_URL}/resources/cats/scarf.jpg`);
-  const butter = require(`${process.env.PUBLIC_URL}/resources/cats/butter.jpg`);
+  const scarf = require(`../resources/cats/scarf.jpg`).default;
+  const butter = require(`../resources/cats/butter.jpg`).default;
 
   return (
     <React.Fragment>
