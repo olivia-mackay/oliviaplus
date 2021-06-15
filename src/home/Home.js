@@ -140,13 +140,11 @@ function Home() {
   const handleClick = () => {
     // handle clicking main page dismisses drawer, otherwise do nothing
     if (open) {
-      console.log("closing drawer");
       setOpen(!open);
     }
   };
 
   return (
-    // todo we need to make sure these are shifted when we open the drawer
     <div
       className={open ? classes.openDrawerPage : classes.page}
       onClick={handleClick}
