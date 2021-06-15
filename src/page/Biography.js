@@ -5,9 +5,11 @@ import {
   Grid,
   List,
   ListItem,
+  ListItemIcon,
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import React from "react";
 
 const me = require("../resources/me.jpg").default;
@@ -30,13 +32,22 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
   },
   caption: {
-    margin: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+    position: "relative",
+    bottom: theme.spacing(1),
   },
   avatarContainer: {
     maxWidth: theme.spacing(54),
   },
   subheader: {
     color: theme.palette.accent.main,
+  },
+  icon: {
+    marginRight: -theme.spacing(4),
+    marginLeft: -theme.spacing(1),
+  },
+  innerIcon: {
+    fontSize: theme.spacing(1),
   },
 }));
 
@@ -71,18 +82,33 @@ export default function Biography() {
           </Typography>
           <List>
             <ListItem>
-              <Typography>OMORI</Typography>
+              <ListItemIcon className={classes.icon}>
+                <FiberManualRecordIcon className={classes.innerIcon} />
+              </ListItemIcon>
+              <Typography>OMORI (please play this)</Typography>
             </ListItem>
             <ListItem>
+              <ListItemIcon className={classes.icon}>
+                <FiberManualRecordIcon className={classes.innerIcon} />
+              </ListItemIcon>
               <Typography>Pokemon FireRed</Typography>
             </ListItem>
             <ListItem>
+              <ListItemIcon className={classes.icon}>
+                <FiberManualRecordIcon className={classes.innerIcon} />
+              </ListItemIcon>
               <Typography>Super Mario Sunshine</Typography>
             </ListItem>
             <ListItem>
+              <ListItemIcon className={classes.icon}>
+                <FiberManualRecordIcon className={classes.innerIcon} />
+              </ListItemIcon>
               <Typography>League of Legends</Typography>
             </ListItem>
             <ListItem>
+              <ListItemIcon className={classes.icon}>
+                <FiberManualRecordIcon className={classes.innerIcon} />
+              </ListItemIcon>
               <Typography>World of Warcraft</Typography>
             </ListItem>
           </List>
