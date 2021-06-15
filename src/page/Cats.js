@@ -8,8 +8,6 @@ import {
   Typography
 } from "@material-ui/core";
 import React from "react";
-import butter from "../images/cats/butter.jpg";
-import scarf from "../images/cats/scarf.jpg";
 const exif = require("exif-parser");
 const util = require("util");
 
@@ -79,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 function CatCard(props) {
   const image = props.image;
   const classes = useStyles();
-  const imageReq = require(`${process.env.PUBLIC_URL}/images/cats/bulk/${image}`);
+  const imageReq = require(`../resources/cats/bulk/${image}`);
   const imageSrc = imageReq.default;
 
   const [flipped, setFlipped] = React.useState(false);
@@ -103,7 +101,7 @@ function CatCard(props) {
     };
 
     // update date with onload callback
-    const location = `images/cats/bulk/${image}`;
+    const location = `resources/cats/bulk/${image}`;
     await fetch(location)
       .then((data) => {
         console.log(`data fetched from ${location}: ${util.inspect(data)}`);
@@ -135,11 +133,14 @@ export default function Cats() {
   const classes = useStyles();
   const images = importAll(
     require.context(
-      `${process.env.PUBLIC_URL}/images/cats/bulk`,
+      `${process.env.PUBLIC_URL}/resources/cats/bulk`,
       false,
       /\.(png|jpg|jpeg|gif)$/
     )
   );
+
+  const scarf = require(`${process.env.PUBLIC_URL}/resources/cats/scarf.jpg`);
+  const butter = require(`${process.env.PUBLIC_URL}/resources/cats/butter.jpg`);
 
   return (
     <React.Fragment>

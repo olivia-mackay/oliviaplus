@@ -5,10 +5,9 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import React from "react";
-import resume from "../images/resume.pdf";
 
 function download(url, filename) {
   var a = document.createElement("a");
@@ -59,6 +58,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Resume() {
+  const resume = require("../resources/resume.pdf");
+
   const handleClick = () => {
     download(resume, "olivia-resume-2021.pdf");
   };

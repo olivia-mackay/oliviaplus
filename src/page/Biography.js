@@ -6,7 +6,6 @@ import {
   Typography
 } from "@material-ui/core";
 import React from "react";
-import me from "../images/me.png";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -33,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Biography() {
   const classes = useStyles();
+
+  const me = require(`../resources/me.jpg`);
 
   return (
     <React.Fragment>
