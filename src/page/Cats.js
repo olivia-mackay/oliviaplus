@@ -5,7 +5,7 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import React from "react";
 import butter from "../images/cats/butter.jpg";
@@ -56,9 +56,6 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "100%",
     width: "100%",
   },
-  name: {},
-  caption: {
-  },
   content: {
     display: "flex",
     flexDirection: "column",
@@ -96,11 +93,9 @@ export default function Cats() {
               </Grid>
               <Grid item>
                 <CardContent className={classes.content}>
-                  <Typography variant="h5" className={classes.name}>
-                    Scarf
-                  </Typography>
-                  <Typography variant="caption" className={classes.caption}>
-                    Adopted July 2017 as a 1.5-year-old shelter cat from
+                  <Typography variant="h5">Scarf</Typography>
+                  <Typography variant="caption">
+                    Adopted July 2017 as a 1.5-year-old shelter cat in
                     Arkadelphia, Arkansas. Rambunctious, friendly, troublemaker.
                   </Typography>
                 </CardContent>
@@ -116,10 +111,8 @@ export default function Cats() {
               </Grid>
               <Grid item>
                 <CardContent className={classes.content}>
-                  <Typography variant="h5" className={classes.name}>
-                    Butter
-                  </Typography>
-                  <Typography variant="caption" className={classes.caption}>
+                  <Typography variant="h5">Butter</Typography>
+                  <Typography variant="caption">
                     Adopted May 2018 as a foster kitten in Webster, New York.
                     Timid, cuddly, also a troublemaker.
                   </Typography>

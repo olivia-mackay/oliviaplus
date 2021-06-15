@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     color: theme.palette.text.secondary,
+    "&:hover": {
+      backgroundColor: theme.palette.accent.secondary,
+    },
   },
   appToolbar: {
     marginLeft: -theme.spacing(1),
