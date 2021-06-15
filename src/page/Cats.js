@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "row",
-    width: '1000px'
+    maxWidth: "100%",
+    minWidth: "100%",
+    width: "100%",
+    padding: "0px",
+    overflow: "hidden",
   },
   card: {
     margin: theme.spacing(1),

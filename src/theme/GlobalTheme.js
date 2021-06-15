@@ -26,7 +26,6 @@ const GlobalTheme = createMuiTheme({
       secondary: black,
     },
   },
-  overrides: {},
 });
 
 export default GlobalTheme;

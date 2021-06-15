@@ -3,7 +3,7 @@ import {
   CardContent,
   CardMedia,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import React from "react";
 import me from "../images/me.png";
@@ -12,13 +12,23 @@ const useStyles = makeStyles((theme) => ({
   card: {
     display: "flex",
     flexDirection: "row",
+    margin: theme.spacing(2),
+    width: "90%",
   },
   media: {
     height: theme.spacing(50),
-    width: "35%",
+    minWidth: theme.spacing(50),
+    width: theme.spacing(50),
+    maxWidth: theme.spacing(50),
     margin: theme.spacing(2),
   },
-  text: { marginBottom: "15px" },
+  text: {
+    marginBottom: theme.spacing(2),
+  },
+  caption: {
+    position: "relative",
+    top: theme.spacing(20),
+  },
 }));
 
 export default function Biography() {
@@ -27,7 +37,6 @@ export default function Biography() {
   return (
     <React.Fragment>
       <Card className={classes.card}>
-        <CardMedia className={classes.media} image={me} />
         <CardContent>
           <Typography variant="h6" className={classes.text}>
             My name is Olivia Moses and I'm a software engineer from Arkansas
@@ -42,10 +51,11 @@ export default function Biography() {
             draw, play video games, and much more. Some of my favorite games are
             Pokemon FireRed, OMORI, and Bloodborne.
           </Typography>
-          <Typography variant="caption">
+          <Typography variant="caption" className={classes.caption}>
             (placeholder for an actual image of me)
           </Typography>
         </CardContent>
+        <CardMedia className={classes.media} image={me} />
       </Card>
     </React.Fragment>
   );

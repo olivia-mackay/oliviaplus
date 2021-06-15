@@ -8,7 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Toolbar,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -17,11 +17,13 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
 import Resume from "../page/Resume";
+
+const pageWidth = "100%";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -37,24 +39,27 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.accent.main,
   },
   page: {
-    marginTop: theme.spacing(11),
-    marginLeft: theme.spacing(2),
-    maxWidth: theme.spacing(150),
-    width: "100%",
+    paddingTop: theme.spacing(11),
+    paddingLeft: theme.spacing(1),
+    maxWidth: pageWidth,
+    width: pageWidth,
+    padding: "10px",
   },
   openDrawerPage: {
-    marginTop: theme.spacing(11),
-    marginLeft: theme.spacing(14),
-    maxWidth: theme.spacing(150),
-    width: "100%",
+    paddingTop: theme.spacing(11),
+    paddingLeft: theme.spacing(14),
+    maxWidth: pageWidth,
+    width: pageWidth,
+    padding: "10px",
   },
   linkList: {
     paddingTop: "70px", // shift down under app bar
     width: "100px",
   },
   link: {
-    padding: "15px",
-    paddingBottom: "15px",
+    padding: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
   },
   appToolbar: {
     marginLeft: -theme.spacing(1),
@@ -98,14 +103,6 @@ function LinkMenu(props) {
               className={classes.link}
               component={RouterLink}
               to="/"
-            >
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem
-              button
-              className={classes.link}
-              component={RouterLink}
-              to="/bio"
             >
               <ListItemText primary="Bio" />
             </ListItem>
@@ -154,9 +151,12 @@ function Home() {
         <LinkMenu open={open} setOpen={setOpen} />
 
         <Switch>
-          <Route exact path="/bio" component={Biography} />
+          <Route exact path="/" component={Biography} />
           <Route exact path="/biography">
-            <Redirect to="/bio" />
+            <Redirect to="/" />
+          </Route>
+          <Route exact path="/bio">
+            <Redirect to="/" />
           </Route>
           <Route exact path="/cats" component={Cats} />
           <Route exact path="/resume" component={Resume} />
