@@ -137,17 +137,9 @@ function Home() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
-  const handleClick = () => {
-    // handle clicking main page dismisses drawer, otherwise do nothing
-    if (open) {
-      setOpen(!open);
-    }
-  };
-
   return (
-    <div
+    <div // pass `open` variable reference into the lower component to sync state (?)
       className={open ? classes.openDrawerPage : classes.page}
-      onClick={handleClick}
     >
       <Router>
         <LinkMenu open={open} setOpen={setOpen} />
