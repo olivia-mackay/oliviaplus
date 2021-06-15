@@ -64,7 +64,7 @@ export default function Biography() {
           <Typography variant="body1" className={classes.text}>
             My name is Olivia Moses and I'm a software engineer from Arkansas,
             currently living in the Rochester, New York area. I've moved across
-            the world to find a job where I can build impactful, robust coding
+            the country to find a job where I can build impactful, robust coding
             solutions to everyday problems.
           </Typography>
           <Typography variant="body1" className={classes.text}>
