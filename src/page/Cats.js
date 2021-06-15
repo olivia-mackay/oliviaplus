@@ -1,5 +1,15 @@
-import { Card, CardMedia, Container, makeStyles } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
+import butter from "../images/cats/butter.jpg";
+import scarf from "../images/cats/scarf.jpg";
 
 const importAll = (requireContext) => {
   const images = [];
@@ -22,18 +32,45 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     margin: theme.spacing(1),
-    width: theme.spacing(35),
   },
   media: {
     height: theme.spacing(35),
     width: theme.spacing(35),
+    margin: theme.spacing(2),
+  },
+  horizontal: {
+    display: "flex",
+    flexDirection: "row",
+    margin: theme.spacing(2),
+    minWidth: theme.spacing(80),
+    maxWidth: theme.spacing(80),
+  },
+  horizontal2: {
+    display: "flex",
+    flexDirection: "row",
+    margin: theme.spacing(2),
+    minWidth: theme.spacing(80),
+    maxWidth: theme.spacing(80),
+  },
+  gallery: {
+    minWidth: "100%",
+    width: "100%",
+  },
+  name: {},
+  caption: {
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    minWidth: theme.spacing(40),
+    maxWidth: theme.spacing(40),
   },
 }));
 
 function CatCard(props) {
   const image = props.image;
   const classes = useStyles();
-  const imageSrc = require(`../images/cats/${image}`);
+  const imageSrc = require(`../images/cats/bulk/${image}`);
 
   return (
     <Card className={classes.card}>
@@ -45,14 +82,58 @@ function CatCard(props) {
 export default function Cats() {
   const classes = useStyles();
   const images = importAll(
-    require.context("../images/cats", false, /\.(png|jpg)$/)
+    require.context("../images/cats/bulk", false, /\.(png|jpg)$/)
   );
 
   return (
-    <Container className={classes.container}>
-      {images.map((image) => {
-        return <CatCard key={image} image={image} />;
-      })}
-    </Container>
+    <React.Fragment>
+      <Grid container>
+        <Grid item>
+          <Card className={classes.horizontal}>
+            <Grid container alignItems="center">
+              <Grid item>
+                <CardMedia className={classes.media} image={scarf} />
+              </Grid>
+              <Grid item>
+                <CardContent className={classes.content}>
+                  <Typography variant="h5" className={classes.name}>
+                    Scarf
+                  </Typography>
+                  <Typography variant="caption" className={classes.caption}>
+                    Adopted July 2017 as a 1.5-year-old shelter cat from
+                    Arkadelphia, Arkansas. Rambunctious, friendly, troublemaker.
+                  </Typography>
+                </CardContent>
+              </Grid>
+            </Grid>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card className={classes.horizontal2}>
+            <Grid container alignItems="center">
+              <Grid item>
+                <CardMedia className={classes.media} image={butter} />
+              </Grid>
+              <Grid item>
+                <CardContent className={classes.content}>
+                  <Typography variant="h5" className={classes.name}>
+                    Butter
+                  </Typography>
+                  <Typography variant="caption" className={classes.caption}>
+                    Adopted May 2018 as a foster kitten in Webster, New York.
+                    Timid, cuddly, also a troublemaker.
+                  </Typography>
+                </CardContent>
+              </Grid>
+            </Grid>
+          </Card>
+        </Grid>
+      </Grid>
+      <Container className={classes.container}>
+        {images.map((image) => {
+          return <CatCard key={image} image={image} />;
+        })}
+      </Container>
+    </React.Fragment>
   );
 }

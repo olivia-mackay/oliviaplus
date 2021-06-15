@@ -8,7 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Toolbar,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -17,7 +17,7 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
+    color: theme.palette.text.secondary,
   },
   appToolbar: {
     marginLeft: -theme.spacing(1),
@@ -104,7 +105,7 @@ function LinkMenu(props) {
               component={RouterLink}
               to="/"
             >
-              <ListItemText primary="Bio" />
+              <ListItemText primary="Home" />
             </ListItem>
             <ListItem
               button

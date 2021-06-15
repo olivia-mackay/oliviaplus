@@ -1,8 +1,11 @@
 import {
   Button,
   Card,
-  CardContent, Container, Grid, makeStyles,
-  Typography
+  CardContent,
+  Container,
+  Grid,
+  makeStyles,
+  Typography,
 } from "@material-ui/core";
 import React from "react";
 import resume from "../images/resume.pdf";
@@ -18,22 +21,25 @@ const useStyles = makeStyles((theme) => ({
   container: {
     padding: 0,
     margin: 0,
+    minWidth: theme.spacing(100),
   },
   card: {
     margin: theme.spacing(2),
+    minWidth: theme.spacing(75),
     width: theme.spacing(75),
     maxWidth: theme.spacing(75),
   },
   horizontal: {
-    display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap",
     margin: 0,
     padding: 0,
-    width: "100%",
-    maxWidth: "100%",
   },
-  item: {},
+  buttonItem: {
+    display: "flex",
+    position: "absolute",
+    right: 0,
+    top: theme.spacing(8),
+  },
   title: {
     paddingBottom: theme.spacing(1),
   },
@@ -47,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     top: theme.spacing(2),
     right: theme.spacing(2),
   },
+  projects: {
+    minWidth: theme.spacing(100),
+  },
 }));
 
 export default function Resume() {
@@ -59,7 +68,7 @@ export default function Resume() {
   return (
     <React.Fragment>
       <Grid container className={classes.horizontal}>
-        <Grid item className={classes.item}>
+        <Grid item className={classes.projects}>
           <Container className={classes.container}>
             <Card className={classes.card}>
               <CardContent>
@@ -135,9 +144,9 @@ export default function Resume() {
             </Card>
           </Container>
         </Grid>
-        <Grid item className={classes.item}>
+        <Grid item className={classes.buttonItem}>
           <Button className={classes.button} onClick={handleClick}>
-            Résumé Download
+            Full Résumé Download
           </Button>
         </Grid>
       </Grid>
