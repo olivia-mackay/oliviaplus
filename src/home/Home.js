@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     color: theme.palette.text.secondary,
+    "&:hover": {
+      backgroundColor: theme.palette.accent.secondary,
+    },
   },
   appToolbar: {
     marginLeft: -theme.spacing(1),
@@ -134,19 +137,9 @@ function Home() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
-  const handleClick = () => {
-    // handle clicking main page dismisses drawer, otherwise do nothing
-    if (open) {
-      console.log("closing drawer");
-      setOpen(!open);
-    }
-  };
-
   return (
-    // todo we need to make sure these are shifted when we open the drawer
-    <div
+    <div // pass `open` variable reference into the lower component to sync state (?)
       className={open ? classes.openDrawerPage : classes.page}
-      onClick={handleClick}
     >
       <Router>
         <LinkMenu open={open} setOpen={setOpen} />

@@ -4,7 +4,8 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const black = "#262626";
 const white = "#FFF0EB";
 const mint = "#A5F8D3";
-const purple = "#A997DF";
+const purple = "#9781D8";
+const selectPurple = "#A997DF";
 
 const GlobalTheme = createMuiTheme({
   palette: {
@@ -17,6 +18,7 @@ const GlobalTheme = createMuiTheme({
     },
     accent: {
       main: purple,
+      secondary: selectPurple,
     },
     background: {
       default: black,
