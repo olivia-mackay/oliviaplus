@@ -28,6 +28,16 @@ const GlobalTheme = createMuiTheme({
       secondary: black,
     },
   },
+  overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        root: {
+          margin: 0,
+          padding: 0,
+        },
+      },
+    },
+  },
 });
 
 export default GlobalTheme;

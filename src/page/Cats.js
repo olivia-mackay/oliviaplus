@@ -7,9 +7,8 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import Grow from "@material-ui/core/Grow";
 import React from "react";
-const exif = require("exif-parser");
-const util = require("util");
 
 const importAll = (requireContext) => {
   const images = [];
@@ -75,57 +74,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CatCard(props) {
-  const image = props.image;
   const classes = useStyles();
+
+  const image = props.image;
   const imageReq = require(`../resources/cats/bulk/${image}`);
   const imageSrc = imageReq.default;
 
-  const [flipped, setFlipped] = React.useState(false);
+  const [hover, setHover] = React.useState(false);
 
-  var date;
-  const handleClick = async () => {
-    console.log("flipping cat card");
-    setFlipped(!flipped);
+  const handleLeave = () => {
+    setHover(false);
+  };
 
-    const fr = new FileReader();
-
-    var buffer;
-    fr.onload = () => {
-      buffer = fr.result;
-      console.log(`buffer: ${buffer}, ${buffer.length}`);
-
-      const parser = exif.create(buffer);
-      date = parser.parse();
-
-      console.log(`result: ${util.inspect(date)}`);
-    };
-
-    // update date with onload callback
-    const location = `../resources/cats/bulk/${image}`;
-    await fetch(location)
-      .then((data) => {
-        console.log(`data fetched from ${location}: ${util.inspect(data)}`);
-        fr.readAsArrayBuffer(new File([data.body.blob], image));
-      })
-      .catch((err) => {
-        console.log(`error fetching: ${err}`);
-      });
+  const handleMove = () => {
+    setHover(true);
   };
 
   return (
-    <Card onClick={handleClick} className={classes.card}>
-      <CardMedia
-        style={{ opacity: flipped ? "0%" : "100%" }}
-        className={classes.media}
-        image={imageSrc}
-      />
-      <CardContent
-        style={{ opacity: flipped ? "100%" : "0%" }}
-        className={classes.cardBack}
+    <Grow in={true} style={{ transitionDelay: "100ms" }}>
+      <Card
+        onMouseEnter={handleMove}
+        onMouseLeave={handleLeave}
+        className={classes.card}
       >
-        <Typography>Picture taken {date}</Typography>
-      </CardContent>
-    </Card>
+        <CardMedia className={classes.media} image={imageSrc} />
+      </Card>
+    </Grow>
   );
 }
 
