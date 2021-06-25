@@ -82,19 +82,21 @@ function CatCard(props) {
 
   const [hover, setHover] = React.useState(false);
 
-  const handleLeave = () => {
+  const shrink = () => {
+    console.log("shrinking element");
     setHover(false);
   };
 
-  const handleMove = () => {
+  const grow = () => {
+    console.log("growing element");
     setHover(true);
   };
 
   return (
-    <Grow in={true} style={{ transitionDelay: "100ms" }}>
+    <Grow in={hover} style={{ transitionDelay: "100ms" }}>
       <Card
-        onMouseEnter={handleMove}
-        onMouseLeave={handleLeave}
+        onMouseEnter={grow}
+        onMouseLeave={shrink}
         className={classes.card}
       >
         <CardMedia className={classes.media} image={imageSrc} />
