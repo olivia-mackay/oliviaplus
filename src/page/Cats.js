@@ -39,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
   card2: {
     margin: theme.spacing(2),
     height: theme.spacing(35),
+    maxHeight: theme.spacing(35),
     minWidth: theme.spacing(35),
+    maxWidth: theme.spacing(35),
     width: theme.spacing(35),
     padding: 0,
     top: -theme.spacing(35),
