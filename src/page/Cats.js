@@ -5,9 +5,10 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import React from "react";
+import { animated, useSpring } from "react-spring";
 
 const importAll = (requireContext) => {
   const images = [];
@@ -31,7 +32,17 @@ const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(2),
     height: theme.spacing(35),
+    minWidth: theme.spacing(35),
     width: theme.spacing(35),
+    padding: 0,
+  },
+  card2: {
+    margin: theme.spacing(2),
+    height: theme.spacing(35),
+    minWidth: theme.spacing(35),
+    width: theme.spacing(35),
+    padding: 0,
+    top: -theme.spacing(35),
   },
   cardBack: {
     position: "relative",
@@ -70,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: "100%",
   },
+  catCard: {
+    minWidth: theme.spacing(40),
+  },
 }));
 
 function CatCard(props) {
@@ -78,18 +92,48 @@ function CatCard(props) {
   const image = props.image;
   const imageReq = require(`../resources/cats/bulk/${image}`);
 
-  const shrink = () => {
-    console.log("shrinking element");
+  const [zoom, setZoom] = React.useState(false);
+  const [springProps, set] = useSpring(() => ({
+    xys: [0, 0, 1], // initial state
+  }));
+
+  const trans = (x, y, s) => `scale(${s})`; // actually do the css function
+
+  const shrink = ({ clientX: x, clientY: y }) => {
+    console.log(`shrinking element ${x} ${y}`);
+    set({ xys: [0, 0, 1] }); // scale back to normal
+    setZoom(false);
   };
 
-  const grow = () => {
-    console.log("growing element");
+  const grow = ({ clientX: x, clientY: y }) => {
+    console.log(`growing element ${x} ${y}`);
+    setZoom(true);
+    set({ xys: [0, 0, 2] }); // scale to 2s
   };
 
   return (
-    <Card onMouseEnter={grow} onMouseLeave={shrink} className={classes.card}>
-      <CardMedia className={classes.media} image={imageReq} />
-    </Card>
+    <div className={classes.catCard}>
+      <Card className={classes.card} style={{ position: "relative" }} />
+      <animated.div
+        onClick={zoom ? shrink : grow}
+        onMouseLeave={shrink}
+        style={{
+          transform: springProps.xys.to(trans),
+          position: "relative",
+          zIndex: zoom ? 1 : 0,
+        }}
+      >
+        <Card
+          className={classes.card2}
+          style={{
+            position: "relative",
+            zIndex: zoom ? 1 : 0,
+          }}
+        >
+          <CardMedia className={classes.media} image={imageReq} />
+        </Card>
+      </animated.div>
+    </div>
   );
 }
 
