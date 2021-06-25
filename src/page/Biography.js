@@ -2,12 +2,11 @@ import {
   Card,
   CardContent,
   CardMedia,
-  Grid,
   List,
   ListItem,
   ListItemIcon,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import React from "react";
@@ -23,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: theme.spacing(50),
   },
   media: {
-    height: theme.spacing(50),
-    minWidth: theme.spacing(50),
-    maxWidth: theme.spacing(50),
+    height: theme.spacing(75),
+    minWidth: "40%",
+    maxWidth: "40%",
     margin: theme.spacing(2),
   },
   text: {
@@ -113,16 +112,7 @@ export default function Biography() {
             </ListItem>
           </List>
         </CardContent>
-        <Grid container direction="column" className={classes.avatarContainer}>
-          <Grid item>
-            <CardMedia className={classes.media} image={me} />
-          </Grid>
-          <Grid item>
-            <Typography variant="caption" className={classes.caption}>
-              (placeholder for an actual image of me)
-            </Typography>
-          </Grid>
-        </Grid>
+        <CardMedia className={classes.media} image={me} />
       </Card>
     </React.Fragment>
   );
