@@ -6,7 +6,7 @@ import {
   ListItem,
   ListItemIcon,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import React from "react";
@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
   card: {
     display: "flex",
     flexDirection: "row",
-    margin: theme.spacing(2),
+    flexWrap: "wrap",
+    flexShrink: 50,
     width: theme.spacing(150),
-    minWidth: theme.spacing(50),
   },
   media: {
     height: theme.spacing(75),
@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
   avatarContainer: {
     maxWidth: theme.spacing(54),
   },
-  subheader: {
-    color: theme.palette.accent.main,
+  header: {
+    color: theme.palette.secondary.main,
   },
   icon: {
     marginRight: -theme.spacing(4),
@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   innerIcon: {
     fontSize: theme.spacing(1),
+    color: theme.palette.secondary.main,
   },
 }));
 
@@ -57,7 +58,7 @@ export default function Biography() {
     <React.Fragment>
       <Card className={classes.card}>
         <CardContent>
-          <Typography className={classes.subheader} variant="h5">
+          <Typography className={classes.header} variant="h5">
             Olivia Moses
           </Typography>
           <Typography variant="body1" className={classes.text}>
@@ -76,7 +77,7 @@ export default function Biography() {
             draw, and play video games.
           </Typography>
 
-          <Typography variant="h5" className={classes.subheader}>
+          <Typography variant="h5" className={classes.header}>
             Favorite Games
           </Typography>
           <List>

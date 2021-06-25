@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     paddingBottom: theme.spacing(1),
-    color: theme.palette.accent.main,
+    color: theme.palette.text.secondary,
   },
   button: {
     backgroundColor: theme.palette.accent.main,
