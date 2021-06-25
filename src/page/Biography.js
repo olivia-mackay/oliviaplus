@@ -11,7 +11,7 @@ import {
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import React from "react";
 
-const me = require("../resources/me.jpg").default;
+const me = require("../resources/me.jpg");
 
 const useStyles = makeStyles((theme) => ({
   card: {

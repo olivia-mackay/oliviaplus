@@ -4,7 +4,7 @@ import {
   CardContent,
   Container,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import React from "react";
 
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Resume() {
-  const resume = require("../resources/resume.jpg").default;
+  const resume = require("../resources/resume.jpg");
 
   const handleClick = () => {
     download(resume, "olivia-resume-2021.pdf");

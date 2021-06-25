@@ -5,9 +5,8 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
-import Grow from "@material-ui/core/Grow";
 import React from "react";
 
 const importAll = (requireContext) => {
@@ -78,30 +77,19 @@ function CatCard(props) {
 
   const image = props.image;
   const imageReq = require(`../resources/cats/bulk/${image}`);
-  const imageSrc = imageReq.default;
-
-  const [hover, setHover] = React.useState(false);
 
   const shrink = () => {
     console.log("shrinking element");
-    setHover(false);
   };
 
   const grow = () => {
     console.log("growing element");
-    setHover(true);
   };
 
   return (
-    <Grow in={hover} style={{ transitionDelay: "100ms" }}>
-      <Card
-        onMouseEnter={grow}
-        onMouseLeave={shrink}
-        className={classes.card}
-      >
-        <CardMedia className={classes.media} image={imageSrc} />
-      </Card>
-    </Grow>
+    <Card onMouseEnter={grow} onMouseLeave={shrink} className={classes.card}>
+      <CardMedia className={classes.media} image={imageReq} />
+    </Card>
   );
 }
 
@@ -111,8 +99,8 @@ export default function Cats() {
     require.context(`../resources/cats/bulk`, false, /\.(png|jpg|jpeg|gif)$/)
   );
 
-  const scarf = require(`../resources/cats/scarf.jpg`).default;
-  const butter = require(`../resources/cats/butter.jpg`).default;
+  const scarf = require(`../resources/cats/scarf.jpg`);
+  const butter = require(`../resources/cats/butter.jpg`);
 
   return (
     <React.Fragment>
