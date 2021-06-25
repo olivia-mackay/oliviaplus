@@ -8,7 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Toolbar,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -17,7 +17,7 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
@@ -26,11 +26,16 @@ import Resume from "../page/Resume";
 const pageWidth = "100%";
 const appBarHeight = 10;
 const drawerWidth = 14;
+const pagePadding = 3;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "absolute",
     zIndex: 1, // in front of drawer
+  },
+  appToolbar: {
+    marginLeft: -theme.spacing(1),
+    minHeight: theme.spacing(appBarHeight),
   },
   drawer: {
     position: "absolute",
@@ -46,12 +51,17 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(appBarHeight),
     maxWidth: pageWidth,
     width: pageWidth,
+    display: "flex",
+    justifyContent: "center",
   },
   openDrawerPage: {
-    paddingTop: theme.spacing(appBarHeight), // away from drawer/app bad
-    paddingLeft: theme.spacing(drawerWidth),
+    padding: theme.spacing(pagePadding),
+    paddingTop: theme.spacing(appBarHeight + pagePadding), // away from drawer/app bad
+    paddingLeft: theme.spacing(drawerWidth + pagePadding),
     maxWidth: pageWidth,
     width: pageWidth,
+    display: "flex",
+    justifyContent: "center",
   },
   linkList: {
     paddingTop: theme.spacing(appBarHeight), // shift down under app bar
@@ -66,10 +76,6 @@ const useStyles = makeStyles((theme) => ({
   linkText: {
     display: "flex",
     justifyContent: "center",
-  },
-  appToolbar: {
-    marginLeft: -theme.spacing(1),
-    minHeight: "70px",
   },
   drawerToolbar: {
     padding: 0,

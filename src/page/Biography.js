@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     flexWrap: "wrap",
     flexShrink: 50,
-    width: theme.spacing(150),
+    width: "100%",
   },
   media: {
     height: theme.spacing(75),
