@@ -4,7 +4,7 @@ import {
   CardMedia,
   Container,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import React from "react";
 import { animated, useSpring } from "react-spring";
@@ -26,12 +26,13 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     padding: theme.spacing(2),
     overflow: "hidden",
+    width: "100%",
   },
   headerCards: {
     // container
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap",
+    flexWrap: "nowrap",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -71,8 +72,12 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     flexDirection: "row",
     overflow: "hidden",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "left",
+    alignItems: "left",
+    margin: 0,
+    padding: 0,
+    width: "100%",
+    minWidth: "100%",
   },
   galleryMedia: {
     height: "100%",
