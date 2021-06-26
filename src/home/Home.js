@@ -8,7 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Toolbar,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -17,7 +17,7 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
     width: pageWidth,
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
   },
   openDrawerPage: {
     padding: theme.spacing(pagePadding),
@@ -62,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     width: pageWidth,
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
   },
   linkList: {
     paddingTop: theme.spacing(appBarHeight), // shift down under app bar
