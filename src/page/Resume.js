@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Resume() {
-  const resume = require("../resources/resume.jpg");
+  const resume = require("../resources/resume.jpg").default;
 
   const handleClick = () => {
     download(resume, "olivia-resume-2021.pdf");

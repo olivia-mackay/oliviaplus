@@ -109,7 +109,7 @@ function CatCard(props) {
   const classes = useStyles();
 
   const image = props.image;
-  const imageReq = require(`../resources/cats/bulk/${image}`);
+  const imageReq = require(`../resources/cats/bulk/${image}`).default;
 
   const [zoom, setZoom] = React.useState(false);
   const [springProps, set] = useSpring(() => ({
@@ -158,8 +158,8 @@ export default function Cats() {
     require.context(`../resources/cats/bulk`, false, /\.(png|jpg|jpeg|gif)$/)
   );
 
-  const scarf = require(`../resources/cats/scarf.jpg`);
-  const butter = require(`../resources/cats/butter.jpg`);
+  const scarf = require(`../resources/cats/scarf.jpg`).default;
+  const butter = require(`../resources/cats/butter.jpg`).default;
 
   return (
     <div className={classes.page}>
