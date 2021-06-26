@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     position: "absolute",
     zIndex: 0, // behind the top bar
-    paddingTop: "100px",
+    paddingTop: theme.spacing(appBarHeight),
   },
   paper: {
     // drawer

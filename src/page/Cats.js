@@ -25,12 +25,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     flexWrap: "wrap",
     padding: theme.spacing(2),
+    overflow: "hidden",
   },
   headerCards: {
     // container
     display: "flex",
     flexDirection: "row",
-    flexWrap: "nowrap",
+    flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -45,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.spacing(40),
     justifyContent: "center",
     alignItems: "center",
+  },
+  caption: {
+    display: "flex",
+    flexWrap: "wrap",
   },
   scarf: {
     display: "flex",
@@ -65,8 +70,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "row",
-    width: "100%",
-    padding: "0px",
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
@@ -162,7 +165,7 @@ export default function Cats() {
           <CardMedia className={classes.headerMedia} image={scarf} />
           <CardContent className={classes.headerContent}>
             <Typography variant="h5">Scarf</Typography>
-            <Typography variant="caption">
+            <Typography className={classes.caption} variant="caption">
               Adopted July 2017 as a 1.5-year-old shelter cat in Arkadelphia,
               Arkansas. Rambunctious, friendly, troublemaker.
             </Typography>
@@ -172,7 +175,7 @@ export default function Cats() {
           <CardMedia className={classes.headerMedia} image={butter} />
           <CardContent className={classes.headerContent}>
             <Typography variant="h5">Butter</Typography>
-            <Typography variant="caption">
+            <Typography className={classes.caption} variant="caption">
               Adopted May 2018 as a foster kitten in Webster, New York. Timid,
               cuddly, also a troublemaker.
             </Typography>
