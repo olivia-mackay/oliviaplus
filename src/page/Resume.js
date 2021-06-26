@@ -4,7 +4,7 @@ import {
   CardContent,
   Container,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import React from "react";
 
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     paddingBottom: theme.spacing(1),
-    color: theme.palette.accent.main,
+    color: theme.palette.text.secondary,
   },
   button: {
     backgroundColor: theme.palette.accent.main,
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Resume() {
-  const resume = require("../resources/resume.jpg").default;
+  const resume = require("../resources/resume.jpg");
 
   const handleClick = () => {
     download(resume, "olivia-resume-2021.pdf");

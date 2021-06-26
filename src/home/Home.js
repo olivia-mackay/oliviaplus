@@ -8,7 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Toolbar,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -17,57 +17,67 @@ import {
   Link as RouterLink,
   Redirect,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom";
 import Biography from "../page/Biography";
 import Cats from "../page/Cats";
 import Resume from "../page/Resume";
 
 const pageWidth = "100%";
+const appBarHeight = 10;
+const drawerWidth = 14;
+const pagePadding = 3;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "absolute",
     zIndex: 1, // in front of drawer
   },
+  appToolbar: {
+    marginLeft: -theme.spacing(1),
+    minHeight: theme.spacing(appBarHeight),
+  },
   drawer: {
     position: "absolute",
     zIndex: 0, // behind the top bar
-    paddingTop: "100px",
+    paddingTop: theme.spacing(appBarHeight),
   },
   paper: {
+    // drawer
     background: theme.palette.accent.main,
+    color: theme.palette.text.primary,
   },
   page: {
-    paddingTop: theme.spacing(11),
-    paddingLeft: theme.spacing(1),
+    paddingTop: theme.spacing(appBarHeight),
     maxWidth: pageWidth,
     width: pageWidth,
-    padding: "10px",
+    display: "flex",
+    justifyContent: "left",
+    alignItems: "left",
   },
   openDrawerPage: {
-    paddingTop: theme.spacing(11),
-    paddingLeft: theme.spacing(14),
+    padding: theme.spacing(pagePadding),
+    paddingTop: theme.spacing(appBarHeight + pagePadding), // away from drawer/app bad
+    paddingLeft: theme.spacing(drawerWidth + pagePadding),
     maxWidth: pageWidth,
     width: pageWidth,
-    padding: "10px",
+    display: "flex",
+    justifyContent: "left",
+    alignItems: "left",
   },
   linkList: {
-    paddingTop: "70px", // shift down under app bar
-    width: "100px",
+    paddingTop: theme.spacing(appBarHeight), // shift down under app bar
+    width: theme.spacing(drawerWidth),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   link: {
     padding: theme.spacing(2),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    color: theme.palette.text.secondary,
-    "&:hover": {
-      backgroundColor: theme.palette.accent.secondary,
-    },
   },
-  appToolbar: {
-    marginLeft: -theme.spacing(1),
-    minHeight: "70px",
+  linkText: {
+    display: "flex",
+    justifyContent: "center",
   },
   drawerToolbar: {
     padding: 0,
@@ -108,7 +118,7 @@ function LinkMenu(props) {
               component={RouterLink}
               to="/"
             >
-              <ListItemText primary="Home" />
+              <ListItemText className={classes.linkText} primary="Home" />
             </ListItem>
             <ListItem
               button
@@ -116,7 +126,7 @@ function LinkMenu(props) {
               component={RouterLink}
               to="/cats"
             >
-              <ListItemText primary="Cats!" />
+              <ListItemText className={classes.linkText} primary="Cats!" />
             </ListItem>
             <ListItem
               button
@@ -124,7 +134,7 @@ function LinkMenu(props) {
               component={RouterLink}
               to="/resume"
             >
-              <ListItemText primary="Résumé" />
+              <ListItemText className={classes.linkText} primary="Résumé" />
             </ListItem>
           </List>
         </Toolbar>
