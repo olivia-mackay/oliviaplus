@@ -4,7 +4,7 @@ import {
   CardMedia,
   Container,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import React from "react";
 import { animated, useSpring } from "react-spring";
@@ -86,10 +86,6 @@ const useStyles = makeStyles((theme) => ({
   catCard: {
     minWidth: theme.spacing(40),
   },
-  invisible: {
-    opacity: 0,
-    zIndex: -1,
-  },
   animated: {
     height: "100%",
     width: "100%",
@@ -98,6 +94,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: 0,
     margin: 0,
+    top: theme.spacing(10),
+    left: theme.spacing(10),
   },
   front: {
     margin: theme.spacing(2),
@@ -129,21 +127,21 @@ function CatCard(props) {
   const grow = ({ clientX: x, clientY: y }) => {
     console.log(`growing element ${x} ${y}`);
     setZoom(true);
-    set({ xys: [0, 0, 2] }); // scale to 2s
+    set({ xys: [0, 0, 3] }); // scale to 2s
   };
 
   return (
     <div className={classes.catCard}>
-      {
-        // invisible background card to take up space when we zoom
-      }
-      <Card className={classes.invisible} />
+      <Card>
+        <CardMedia className={classes.galleryMedia} image={imageReq} />
+      </Card>
       <animated.div
         onClick={zoom ? shrink : grow}
-        onMouseLeave={shrink}
         className={classes.animated}
         style={{
           transform: springProps.xys.to(trans),
+          position: zoom ? "absolute" : "inherit",
+          zIndex: zoom ? 1 : 0,
         }}
       >
         <Card className={classes.front}>
