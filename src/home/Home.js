@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: pageWidth,
     width: pageWidth,
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "left",
+    alignItems: "left",
   },
   openDrawerPage: {
     padding: theme.spacing(pagePadding),
@@ -62,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: pageWidth,
     width: pageWidth,
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "left",
+    alignItems: "left",
   },
   linkList: {
     paddingTop: theme.spacing(appBarHeight), // shift down under app bar
