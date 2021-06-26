@@ -3,7 +3,6 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Grid,
   makeStyles,
   Typography,
 } from "@material-ui/core";
@@ -18,60 +17,44 @@ const importAll = (requireContext) => {
   return images;
 };
 
+const cardHeight = 35;
+
 const useStyles = makeStyles((theme) => ({
-  container: {
+  page: {
     display: "flex",
+    flexDirection: "column",
     flexWrap: "wrap",
+    padding: theme.spacing(2),
+  },
+  headerCards: {
+    // container
+    display: "flex",
     flexDirection: "row",
-    maxWidth: "100%",
-    minWidth: "100%",
-    width: "100%",
-    padding: "0px",
-    overflow: "hidden",
-  },
-  card: {
-    margin: theme.spacing(2),
-    height: theme.spacing(35),
-    minWidth: theme.spacing(35),
-    width: theme.spacing(35),
-    padding: 0,
-  },
-  card2: {
-    margin: theme.spacing(2),
-    height: theme.spacing(35),
-    maxHeight: theme.spacing(35),
-    minWidth: theme.spacing(35),
-    maxWidth: theme.spacing(35),
-    width: theme.spacing(35),
-    padding: 0,
-    top: -theme.spacing(35),
-  },
-  cardBack: {
-    position: "relative",
-    top: "-100%",
-  },
-  media: {
-    height: "95%",
-    margin: theme.spacing(1),
+    flexWrap: "nowrap",
+    justifyContent: "center",
+    alignItems: "center",
   },
   headerMedia: {
     margin: theme.spacing(2),
     height: theme.spacing(35),
     width: theme.spacing(35),
   },
-  content: {
+  headerContent: {
     display: "flex",
     flexDirection: "column",
     maxWidth: theme.spacing(40),
+    justifyContent: "center",
+    alignItems: "center",
   },
-  horizontal: {
+  scarf: {
     display: "flex",
     flexDirection: "row",
+    flexWrap: "nowrap",
     margin: theme.spacing(2),
     minWidth: theme.spacing(80),
     maxWidth: theme.spacing(80),
   },
-  horizontal2: {
+  butter: {
     display: "flex",
     flexDirection: "row",
     margin: theme.spacing(2),
@@ -79,12 +62,40 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.spacing(80),
   },
   gallery: {
-    minWidth: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
     width: "100%",
-    maxWidth: "100%",
+    padding: "0px",
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  galleryMedia: {
+    height: "100%",
+    width: "100%",
   },
   catCard: {
     minWidth: theme.spacing(40),
+  },
+  invisible: {
+    opacity: 0,
+    zIndex: -1,
+  },
+  animated: {
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 0,
+    margin: 0,
+  },
+  front: {
+    margin: theme.spacing(2),
+    height: theme.spacing(cardHeight),
+    width: theme.spacing(cardHeight),
+    padding: theme.spacing(2),
   },
 }));
 
@@ -115,24 +126,20 @@ function CatCard(props) {
 
   return (
     <div className={classes.catCard}>
-      <Card className={classes.card} style={{ position: "relative" }} />
+      {
+        // invisible background card to take up space when we zoom
+      }
+      <Card className={classes.invisible} />
       <animated.div
         onClick={zoom ? shrink : grow}
         onMouseLeave={shrink}
+        className={classes.animated}
         style={{
           transform: springProps.xys.to(trans),
-          position: "relative",
-          zIndex: zoom ? 1 : 0,
         }}
       >
-        <Card
-          className={classes.card2}
-          style={{
-            position: "relative",
-            zIndex: zoom ? 1 : 0,
-          }}
-        >
-          <CardMedia className={classes.media} image={imageReq} />
+        <Card className={classes.front}>
+          <CardMedia className={classes.galleryMedia} image={imageReq} />
         </Card>
       </animated.div>
     </div>
@@ -149,50 +156,34 @@ export default function Cats() {
   const butter = require(`../resources/cats/butter.jpg`);
 
   return (
-    <React.Fragment>
-      <Grid container>
-        <Grid item>
-          <Card className={classes.horizontal}>
-            <Grid container alignItems="center">
-              <Grid item>
-                <CardMedia className={classes.headerMedia} image={scarf} />
-              </Grid>
-              <Grid item>
-                <CardContent className={classes.content}>
-                  <Typography variant="h5">Scarf</Typography>
-                  <Typography variant="caption">
-                    Adopted July 2017 as a 1.5-year-old shelter cat in
-                    Arkadelphia, Arkansas. Rambunctious, friendly, troublemaker.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Grid>
-          </Card>
-        </Grid>
-        <Grid item>
-          <Card className={classes.horizontal2}>
-            <Grid container alignItems="center">
-              <Grid item>
-                <CardMedia className={classes.headerMedia} image={butter} />
-              </Grid>
-              <Grid item>
-                <CardContent className={classes.content}>
-                  <Typography variant="h5">Butter</Typography>
-                  <Typography variant="caption">
-                    Adopted May 2018 as a foster kitten in Webster, New York.
-                    Timid, cuddly, also a troublemaker.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Grid>
-          </Card>
-        </Grid>
-      </Grid>
-      <Container className={classes.container}>
+    <div className={classes.page}>
+      <Container className={classes.headerCards}>
+        <Card className={classes.scarf}>
+          <CardMedia className={classes.headerMedia} image={scarf} />
+          <CardContent className={classes.headerContent}>
+            <Typography variant="h5">Scarf</Typography>
+            <Typography variant="caption">
+              Adopted July 2017 as a 1.5-year-old shelter cat in Arkadelphia,
+              Arkansas. Rambunctious, friendly, troublemaker.
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card className={classes.butter}>
+          <CardMedia className={classes.headerMedia} image={butter} />
+          <CardContent className={classes.headerContent}>
+            <Typography variant="h5">Butter</Typography>
+            <Typography variant="caption">
+              Adopted May 2018 as a foster kitten in Webster, New York. Timid,
+              cuddly, also a troublemaker.
+            </Typography>
+          </CardContent>
+        </Card>
+      </Container>
+      <Container className={classes.gallery}>
         {images.map((image) => {
           return <CatCard key={image} image={image} />;
         })}
       </Container>
-    </React.Fragment>
+    </div>
   );
 }
