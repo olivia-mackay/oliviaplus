@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@fontsource/roboto": "^4.5.5",
+    "@mui/base": "^5.0.0-alpha.74",
+    "@mui/icons-material": "^5.5.1",
     "chokidar": "^3.5.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
