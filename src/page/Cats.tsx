@@ -5,14 +5,14 @@ import {
   Container,
   makeStyles,
   Typography,
-} from "@material-ui/core";
-import React from "react";
-import { animated, useSpring } from "react-spring";
+} from '@material-ui/core';
+import React from 'react';
+import { animated, useSpring } from 'react-spring';
 
 const importAll = (requireContext) => {
   const images = [];
   requireContext.keys().forEach((key) => {
-    images.push(key.replace("./", ""));
+    images.push(key.replace('./', ''));
   });
   return images;
 };
@@ -21,20 +21,20 @@ const cardHeight = 35;
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    display: "flex",
-    flexDirection: "column",
-    flexWrap: "wrap",
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
     padding: theme.spacing(2),
-    overflow: "hidden",
-    width: "100%",
+    overflow: 'hidden',
+    width: '100%',
   },
   headerCards: {
     // container
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "nowrap",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerMedia: {
     margin: theme.spacing(2),
@@ -42,56 +42,56 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(35),
   },
   headerContent: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     maxWidth: theme.spacing(40),
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   caption: {
-    display: "flex",
-    flexWrap: "wrap",
+    display: 'flex',
+    flexWrap: 'wrap',
   },
   scarf: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "nowrap",
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
     margin: theme.spacing(2),
     minWidth: theme.spacing(80),
     maxWidth: theme.spacing(80),
   },
   butter: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     margin: theme.spacing(2),
     minWidth: theme.spacing(80),
     maxWidth: theme.spacing(80),
   },
   gallery: {
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "row",
-    overflow: "hidden",
-    justifyContent: "left",
-    alignItems: "left",
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    overflow: 'hidden',
+    justifyContent: 'left',
+    alignItems: 'left',
     margin: 0,
     padding: 0,
-    width: "100%",
-    minWidth: "100%",
+    width: '100%',
+    minWidth: '100%',
   },
   galleryMedia: {
-    height: "100%",
-    width: "100%",
+    height: '100%',
+    width: '100%',
   },
   catCard: {
     minWidth: theme.spacing(40),
   },
   animated: {
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 0,
     margin: 0,
     top: theme.spacing(10),
@@ -140,7 +140,7 @@ function CatCard(props) {
         className={classes.animated}
         style={{
           transform: springProps.xys.to(trans),
-          position: zoom ? "absolute" : "inherit",
+          position: zoom ? 'absolute' : 'inherit',
           zIndex: zoom ? 1 : 0,
         }}
       >
@@ -167,8 +167,8 @@ export default function Cats() {
         <Card className={classes.scarf}>
           <CardMedia className={classes.headerMedia} image={scarf} />
           <CardContent className={classes.headerContent}>
-            <Typography variant="h5">Scarf</Typography>
-            <Typography className={classes.caption} variant="caption">
+            <Typography variant='h5'>Scarf</Typography>
+            <Typography className={classes.caption} variant='caption'>
               Adopted July 2017 as a 1.5-year-old shelter cat in Arkadelphia,
               Arkansas. Rambunctious, friendly, troublemaker.
             </Typography>
@@ -177,8 +177,8 @@ export default function Cats() {
         <Card className={classes.butter}>
           <CardMedia className={classes.headerMedia} image={butter} />
           <CardContent className={classes.headerContent}>
-            <Typography variant="h5">Butter</Typography>
-            <Typography className={classes.caption} variant="caption">
+            <Typography variant='h5'>Butter</Typography>
+            <Typography className={classes.caption} variant='caption'>
               Adopted May 2018 as a foster kitten in Webster, New York. Timid,
               cuddly, also a troublemaker.
             </Typography>

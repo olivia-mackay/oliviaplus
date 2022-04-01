@@ -1,4 +1,4 @@
-import "@fontsource/roboto";
+import '@fontsource/roboto';
 import {
   AppBar,
   Drawer,
@@ -9,28 +9,25 @@ import {
   makeStyles,
   Toolbar,
   Typography,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import React from "react";
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Link as RouterLink,
-  Redirect,
   Route,
   Switch,
-} from "react-router-dom";
-import Biography from "../page/Biography";
-import Cats from "../page/Cats";
-import Resume from "../page/Resume";
+} from 'react-router-dom';
+import Cats from '../page/Cats';
 
-const pageWidth = "100%";
+const pageWidth = '100%';
 const appBarHeight = 10;
 const drawerWidth = 14;
 const pagePadding = 3;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1, // in front of drawer
   },
   appToolbar: {
@@ -38,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: theme.spacing(appBarHeight),
   },
   drawer: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 0, // behind the top bar
     paddingTop: theme.spacing(appBarHeight),
   },
@@ -51,9 +48,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(appBarHeight),
     maxWidth: pageWidth,
     width: pageWidth,
-    display: "flex",
-    justifyContent: "left",
-    alignItems: "left",
+    display: 'flex',
+    justifyContent: 'left',
+    alignItems: 'left',
   },
   openDrawerPage: {
     padding: theme.spacing(pagePadding),
@@ -61,23 +58,23 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(drawerWidth + pagePadding),
     maxWidth: pageWidth,
     width: pageWidth,
-    display: "flex",
-    justifyContent: "left",
-    alignItems: "left",
+    display: 'flex',
+    justifyContent: 'left',
+    alignItems: 'left',
   },
   linkList: {
     paddingTop: theme.spacing(appBarHeight), // shift down under app bar
     width: theme.spacing(drawerWidth),
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   link: {
     padding: theme.spacing(2),
   },
   linkText: {
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
   },
   drawerToolbar: {
     padding: 0,
@@ -96,14 +93,14 @@ function LinkMenu(props) {
     <React.Fragment>
       <AppBar>
         <Toolbar className={classes.appToolbar}>
-          <IconButton edge="start" aria-label="menu" onClick={handleClick}>
-            <MenuIcon color="secondary" />
+          <IconButton edge='start' aria-label='menu' onClick={handleClick}>
+            <MenuIcon color='secondary' />
           </IconButton>
-          <Typography variant="h5">Navigation</Typography>
+          <Typography variant='h5'>Navigation</Typography>
         </Toolbar>
       </AppBar>
       <Drawer
-        variant="persistent"
+        variant='persistent'
         open={open}
         classes={{
           root: classes.drawer,
@@ -116,25 +113,25 @@ function LinkMenu(props) {
               button
               className={classes.link}
               component={RouterLink}
-              to="/"
+              to='/'
             >
-              <ListItemText className={classes.linkText} primary="Home" />
+              <ListItemText className={classes.linkText} primary='Home' />
             </ListItem>
             <ListItem
               button
               className={classes.link}
               component={RouterLink}
-              to="/cats"
+              to='/cats'
             >
-              <ListItemText className={classes.linkText} primary="Cats!" />
+              <ListItemText className={classes.linkText} primary='Cats!' />
             </ListItem>
             <ListItem
               button
               className={classes.link}
               component={RouterLink}
-              to="/resume"
+              to='/resume'
             >
-              <ListItemText className={classes.linkText} primary="Résumé" />
+              <ListItemText className={classes.linkText} primary='Résumé' />
             </ListItem>
           </List>
         </Toolbar>
@@ -155,15 +152,8 @@ function Home() {
         <LinkMenu open={open} setOpen={setOpen} />
 
         <Switch>
-          <Route exact path="/" component={Biography} />
-          <Route exact path="/biography">
-            <Redirect to="/" />
-          </Route>
-          <Route exact path="/bio">
-            <Redirect to="/" />
-          </Route>
-          <Route exact path="/cats" component={Cats} />
-          <Route exact path="/resume" component={Resume} />
+          <Route exact path='/' component={Cats} />
+          <Route exact path='/cats' component={Cats} />
         </Switch>
       </Router>
     </div>

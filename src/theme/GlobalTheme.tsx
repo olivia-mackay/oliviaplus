@@ -1,16 +1,16 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from '@material-ui/core/styles';
 
 // round 3 of colors
-const black = "#262626";
-const white = "#FFF0EB";
-const mint = "#A5F8D3";
-const purple = "#9781D8";
-const violet = "#231942";
-const selectPurple = "#A997DF";
+const black = '#262626';
+const white = '#FFF0EB';
+const mint = '#A5F8D3';
+const purple = '#9781D8';
+const violet = '#231942';
+const selectPurple = '#A997DF';
 
 const GlobalTheme = createMuiTheme({
   palette: {
-    type: "dark",
+    type: 'dark',
     primary: {
       main: mint,
     },
@@ -29,7 +29,7 @@ const GlobalTheme = createMuiTheme({
   },
   overrides: {
     MuiCssBaseline: {
-      "@global": {
+      '@global': {
         body: {
           backgroundColor: black,
         },
